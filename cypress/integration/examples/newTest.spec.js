@@ -4,55 +4,41 @@ describe('1. Wyszukiwanie sklepów', () => {
     cy.visit('/')
       .get("[data-test='city']")
       .select('Warszawa')
-      .get("[data-test='street']")
+    })
+
+  it('1. Enter Dolna 5a, radius = 100 and 1 shop was returned', () => {
+    cy.get("[data-test='street']")
       .clear()
       .type('Dolna')
       .get("[data-test='streetNumber']")
       .clear()
       .type('5a')
-    })
 
-    it('1. Enter Dolna 5a, radius = 100 and test if 1 shop were returned', () => {
-      cy.get("[data-test='radius']")
-        .clear()
-        .type(100)
-        .get("[data-test='buttonSearch']")
-        .click()
-        .get("[data-test='stockTable']")
-        .find('tbody')
-        .find('tr')
-        .should('have.length', 1)
-  })
-
-  it('2. Enter Dolna 5a, radius = 500 and test if 3 shops were returned', () => {
     cy.get("[data-test='radius']")
       .clear()
-      .type(500)
-      .get("[data-test='buttonSearch']")
+      .type(100)
+
+    cy.get("[data-test='buttonSearch']")
       .click()
       .get("[data-test='stockTable']")
       .find('tbody')
       .find('tr')
-      .should('have.length', 3)
+      .should('have.length', 1)
   })
 
-  it('3. Enter Dolna 5a, radius = 600 and test if 6 shops were returned', () => {
-    cy.get("[data-test='radius']")
+  it('2. Enter Dolna 5a, radius = 800 and 13 shops were returned', () => {
+    cy.get("[data-test='street']")
       .clear()
-      .type(600)
-      .get("[data-test='buttonSearch']")
-      .click()
-      .get("[data-test='stockTable']")
-      .find('tbody')
-      .find('tr')
-      .should('have.length', 6)
-  })
+      .type('Dolna')
+      .get("[data-test='streetNumber']")
+      .clear()
+      .type('5a')
 
-  it('4. Enter Dolna 5a, radius = 800 and test if 13 shops were returned', () => {
     cy.get("[data-test='radius']")
       .clear()
       .type(800)
-      .get("[data-test='buttonSearch']")
+
+    cy.get("[data-test='buttonSearch']")
       .click()
       .get("[data-test='stockTable']")
       .find('tbody')
@@ -60,200 +46,306 @@ describe('1. Wyszukiwanie sklepów', () => {
       .should('have.length', 13)
   })
 
-  it('5. Enter Dolna 5a, radius = 1000 and test if 20 shops were returned', () => {
+  it('3. Enter Sulmierzycka 2, radius = 500 and 2 shops were returned', () => {
+    cy.get("[data-test='street']")
+      .clear()
+      .type('Sulmierzycka')
+      .get("[data-test='streetNumber']")
+      .clear()
+      .type('2')
+
     cy.get("[data-test='radius']")
       .clear()
-      .type(1000)
-      .get("[data-test='buttonSearch']")
+      .type(500)
+
+    cy.get("[data-test='buttonSearch']")
       .click()
       .get("[data-test='stockTable']")
       .find('tbody')
       .find('tr')
-      .should('have.length', 20)
+      .should('have.length', 2)
   })
 
-  it('6. Enter Dolna 5a, radius = 1100 and test if 24 shops were returned', () => {
+  it('4. Enter Sulmierzycka 2, radius = 1100 and 2 shops were returned', () => {
+    cy.get("[data-test='street']")
+      .clear()
+      .type('Sulmierzycka')
+      .get("[data-test='streetNumber']")
+      .clear()
+      .type('2')
+
     cy.get("[data-test='radius']")
       .clear()
       .type(1100)
-      .get("[data-test='buttonSearch']")
+
+    cy.get("[data-test='buttonSearch']")
       .click()
       .get("[data-test='stockTable']")
       .find('tbody')
       .find('tr')
-      .should('have.length', 24)
+      .should('have.length', 11)
   })
 
-  it('7. Enter Dolna 5a, radius = 1300 and test if 28 shops were returned', () => {
+  it('5. Enter Bacha 7, radius = 500 and 3 shops were returned', () => {
+    cy.get("[data-test='street']")
+      .clear()
+      .type('Bacha')
+      .get("[data-test='streetNumber']")
+      .clear()
+      .type('7')
+
     cy.get("[data-test='radius']")
       .clear()
-      .type(1300)
-      .get("[data-test='buttonSearch']")
+      .type(500)
+
+    cy.get("[data-test='buttonSearch']")
       .click()
       .get("[data-test='stockTable']")
       .find('tbody')
       .find('tr')
-      .should('have.length', 28)
+      .should('have.length', 3)
   })
 
-  it('8. Enter Dolna 5a, radius = 1400 and test if 28 shops were returned', () => {
-    cy.get("[data-test='radius']")
+  it('6. Enter Bacha 7, radius = 1100 and 8 shops were returned', () => {
+    cy.get("[data-test='street']")
       .clear()
-      .type(1400)
-      .get("[data-test='buttonSearch']")
-      .click()
-      .get("[data-test='stockTable']")
-      .find('tbody')
-      .find('tr')
-      .should('have.length', 28)
-  })
+      .type('Bacha')
+      .get("[data-test='streetNumber']")
+      .clear()
+      .type('7')
 
-  it('9. Enter Dolna 5a, radius = 1500 and test if 33 shops were returned', () => {
     cy.get("[data-test='radius']")
       .clear()
-      .type(1500)
-      .get("[data-test='buttonSearch']")
-      .click()
-      .get("[data-test='stockTable']")
-      .find('tbody')
-      .find('tr')
-      .should('have.length', 33)
-  })
+      .type(1100)
 
-  it('10. Enter Dolna 5a, radius = 2000 and test if 51 shops were returned', () => {
-    cy.get("[data-test='radius']")
-      .clear()
-      .type(2000)
-      .get("[data-test='buttonSearch']")
+    cy.get("[data-test='buttonSearch']")
       .click()
       .get("[data-test='stockTable']")
       .find('tbody')
       .find('tr')
-      .should('have.length', 51)
+      .should('have.length', 8)
   })
 })
 
 describe('2. Wyszukiwanie sklepów - brak miasta lub ulicy', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get("[data-test='buttonResetLocation']")
+      .click()
   })
 
-  it('1. Brak miasta i ulicy, klik w Searcha i ma się wyświetlić modal "Brak miasta"', () => {
+  it('1. Brak miasta i ulicy, klik w Szukaj wyświetla modala "Brak miasta"', () => {
     cy.get("[data-test='buttonSearch']")
       .click()
-      .get("[data-test='modalCity']")
+
+    cy.contains('Brak miasta')
+      .should('exist')
   })
 
-  it('2. Jest miasto, ale brak ulicy, klik w Searcha i ma wyświetlić się modal "Brak ulicy"', () => {
+  it('2. Jest miasto, ale brak ulicy, klik w Szukaj i ma wyświetlić się modal "Brak ulicy"', () => {
     cy.get("[data-test='city']")
       .select('Warszawa')
 
     cy.get("[data-test='buttonSearch']")
       .click()
-      .get("[data-test='modalStreet']")
+
+    cy.contains('Brak ulicy')
+      .should('exist')
   })
 
-  it('3. Jest ulica ale brak miasta, klik w Searcha i ma wyświetlić się modal "Brak miasta"', () => {
-    cy.get("[data-test='street']")
-      .type('Dolna 5a')
-
-    cy.contains('Search')
+  it('3. Jest ulica ale brak miasta, klik w Szukaj i ma wyświetlić się modal "Brak miasta"', () => {
+    cy.contains('Wyczyść')
       .click()
-      .get("[data-test='modalCity']")
+
+    cy.get("[data-test='street']")
+      .clear()
+      .type('Dolna')
+
+    cy.contains('Szukaj')
+      .click()
+
+    cy.contains('Brak miasta')
+      .should('exist')
+
+  })
+
+  it('4. Jest miasto i ulica ale brak promienia, klik w Szukaj i ma wyświetlić się modal "Brak miasta"', () => {
+    cy.contains('Wyczyść')
+      .click()
+
+    cy.get("[data-test='street']")
+      .clear()
+      .type('Dolna')
+
+    cy.contains('Szukaj')
+      .click()
+
+    cy.contains('Brak miasta')
+      .should('exist')
+
   })
 })
 
 describe(`3. Reset buttons (są sklepy (Wwa, Dolna 5a, 600m).
-             Czek w Chleb i Masło wyświetla kolumny Chleb, Maslo i Total`, () => {
+  Czek w Chleb i Masło wyświetla kolumny Chleb, Maslo i Total`, () => {
   // wybranie sklepów w promieniu 600m od Dolnej 5a, Wwa
-  beforeEach(() => {
-    cy.visit('/')
-      .get("[data-test='city']")
-      .select('Warszawa')
-      .get("[data-test='street']")
-      .clear()
-      .type('Dolna 5a')
-      .get("[data-test='radius']")
-      .clear()
-      .type(600)
-      .get("[data-test='buttonSearch']")
-      .click()
+    beforeEach(() => {
+      cy.visit('/')
+        .get("[data-test='city']")
+        .select('Warszawa')
+        .get("[data-test='street']")
+        .clear()
+        .type('Dolna 5a')
+        .get("[data-test='radius']")
+        .clear()
+        .type(600)
+        .get("[data-test='buttonSearch']")
+        .click()
+        .wait(1000)
 
-      .wait(1000)
+        // czeknięcie boksów 'Chleb' i 'Masło'
+        .get("[data-test='stocks']")
+        .get('#__BVID__18__BV_check_0_opt_')
+        .check({ force: true })
+        .get('#__BVID__18__BV_check_1_opt_')
+        .check({ force: true })
+    })
 
-      // czeknięcie boksów 'Chleb' i 'Masło'
-      .get("[data-test='stocks']")
-      .get('#__BVID__19__BV_check_0_opt_')
-      .check({ force: true })
-      .get('#__BVID__19__BV_check_1_opt_')
-      .check({ force: true })
-  })
+    it('1. Uncheck zdejmuje czekboksy towarów i znika ich kolumny i Total', () => {
+      // czy nagłówek tabela zawiera słowa 'Total', 'Chleb' lub 'Masło'
+      cy.get('[data-test="stockTable"] thead tr th')
+        .contains(/Razem/)
 
-  it('1. Unczek zdejmuje czekboksy towarów i znika ich kolumny i Total', () => {
-    // czy nagłówek tabela zawiera słowa 'Total', 'Chleb' lub 'Masło'
-    cy.get('[data-test="stockTable"] thead tr th')
-      .contains(/Total/)
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Chleb/)
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Chleb/)
+        .get('[data-test="stockTable"] thead tr th')
+        .contains(/Chleb/)
+        .should('exist')
 
-      // uncheck boksa Chleb
-      .get("[data-test='stocks']")
-      .get('#__BVID__19__BV_check_0_opt_')
-      .uncheck({ force: true })
+        .get('[data-test="stockTable"] thead tr th')
+        .contains(/Maslo/)
+        .should('exist')
 
-      .wait(500)
+        // uncheck boksa Chleb
+        .get("[data-test='stocks']")
+        .get('#__BVID__18__BV_check_0_opt_')
+        .uncheck({ force: true })
 
-    // znika kolumna 'Chleb' ?
-    cy.get('[data-test="stockTable"] thead tr th')
-      .contains(/Chleb/)
-      .should('not.exist')
+        .wait(500)
 
-      // uncheck boksa Maslo
-      .get("[data-test='stocks']")
-      .get('#__BVID__19__BV_check_1_opt_')
-      .uncheck({ force: true })
+      // znika kolumna 'Chleb' ?
+      cy.get('[data-test="stockTable"] thead tr th')
+        .contains(/Chleb/)
+        .should('not.exist')
 
-      //Znika kolumna 'Maslo' ?
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Maslo/)
-      .should('not.exist')
+        // uncheck boksa Maslo
+        .get("[data-test='stocks']")
+        .get('#__BVID__18__BV_check_1_opt_')
+        .uncheck({ force: true })
 
-      // i 'Total' ?
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Total/)
-      .should('not.exist')
-  })
+        //Znika kolumna 'Maslo' ?
+        .get('[data-test="stockTable"] thead tr th')
+        .contains(/Maslo/)
+        .should('not.exist')
 
-  it('2. Klik Reset towarów odczekowuje towary i znika ich kolumny i kolumnę Total ?', () => {
-    // Klik w Reset powinien znikać kolumny Total, Chleb i Maslo
-    cy.get("[data-test='buttonResetStock']")
-      .click()
+        // i 'Total' ?
+        .get('[data-test="stockTable"] thead tr th')
+        .contains(/Total/)
+        .should('not.exist')
+    })
 
-      //Znika kolumna 'Total' ?
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Total/)
-      .should('not.exist')
+    it('2. Klik Reset towarów odczekowuje towary i znika ich kolumny i kolumnę Total ?', () => {
+      // Klik w Reset powinien znikać kolumny Total, Chleb i Maslo
+      cy.contains('Kasuj')
+        .click({ force: true })
 
-      //Znika kolumna 'Chleb' ?
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Chleb/)
-      .should('not.exist')
+      cy.contains('Razem')
+        .should('not.exist')
 
-      //Znika kolumna 'Maslo' ?
-      .get('[data-test="stockTable"] thead tr th')
-      .contains(/Maslo/)
-      .should('not.exist')
-  })
+        //Znika kolumna 'Chleb' ?
+      cy.get('[data-test="stockTable"] thead tr th')
+        .contains(/Chleb/)
+        .should('not.exist')
 
-  it('3. Klik Reset lokalizacji odczekowuje towary i znika ich kolumny i kolumnę Total ?', () => {
-    // Klik w Reset powinien znikać kolumny Total, Chleb i Maslo
-    cy.get("[data-test='buttonResetLocation']")
-      .click()
+        //Znika kolumna 'Maslo' ?
+      cy.get('[data-test="stockTable"] thead tr th')
+        .contains(/Maslo/)
+        .should('not.exist')
+    })
 
-      //Znika tabela towarów ?
-      .get("[data-test='stockTable']")
-      .should('not.exist')
-  })
+    it('3. Klik Reset lokalizacji odczekowuje towary i znika ich kolumny i kolumnę Razem', () => {
+      // Klik w Reset powinien znikać kolumny Total, Chleb i Maslo
+      cy.get("[data-test='buttonResetLocation']")
+        .click()
+
+        //Znika tabela towarów ?
+        .get("[data-test='stockTable']")
+        .should('not.exist')
+
+        .get("[data-test='street']")
+        .should('be.empty')
+
+        .get("[data-test='streetNumber']")
+        .should('be.empty')
+
+        .get("[data-test='radius']")
+        .should('be.empty')
+      })
+})
+
+describe(`4. Liczenie kwoty 'Razem'`, () => {
+  // wybranie sklepów w promieniu 600m od Dolnej 5a, Wwa
+    beforeEach(() => {
+      cy.visit('/')
+        .get("[data-test='city']")
+        .select('Warszawa')
+        .get("[data-test='street']")
+        .clear()
+        .type('Dolna 5a')
+        .get("[data-test='radius']")
+        .clear()
+        .type(600)
+        .get("[data-test='buttonSearch']")
+        .click()
+        .wait(1000)
+    })
+
+    it('1. Dolna 5a, Warszawa, promień = 600. Pierwszy sklep. Kwota za chleb = 7, masło = 7, Razem = 14', () => {
+      // czy nagłówek tabela zawiera słowa 'Total', 'Chleb' lub 'Masło'
+      cy.contains('Chleb').click()
+      cy.contains('Masło').click()
+
+      // cy.get('#stockTable > tbody > tr:first > td:nth-child(7)').invoke('text').should('eq', '14')
+      cy.get('#stockTable > tbody > tr:first > td:nth-child(7)').invoke('text').should('eq', '14')
+      cy.get('#stockTable > tbody > tr:first > td:nth-child(8)').invoke('text').should('eq', '7')
+      cy.get('#stockTable > tbody > tr:first > td:nth-child(9)').invoke('text').should('eq', '7')
+
+    })
+
+    it(`2. Dolna 5a, Warszawa, promień = 600. Trzeci sklep.
+      Kwota za ser = 21, śmeitana = 6, jajka = 2, mleko = 2, szynka = 31, Razem = 62'`, () => {
+      cy.contains('Ser').click()
+      cy.contains('Śmietana').click()
+      cy.contains('Jajka').click()
+      cy.contains('Mleko').click()
+      cy.contains('Szynka').click()
+
+      cy.get('#stockTable > tbody > tr:nth-child(3) > td:nth-child(7)').invoke('text').should('eq', '62')
+      cy.get('#stockTable > tbody > tr:nth-child(3) > td:nth-child(8)').invoke('text').should('eq', '21')
+      cy.get('#stockTable > tbody > tr:nth-child(3) > td:nth-child(9)').invoke('text').should('eq', '6')
+      cy.get('#stockTable > tbody > tr:nth-child(3) > td:nth-child(10)').invoke('text').should('eq', '2')
+      cy.get('#stockTable > tbody > tr:nth-child(3) > td:nth-child(11)').invoke('text').should('eq', '2')
+      cy.get('#stockTable > tbody > tr:nth-child(3) > td:nth-child(12)').invoke('text').should('eq', '31')
+
+    })
+
+    it.only(`3. Dolna 5a, Warszawa, promień = 600. Szósty sklep.
+      Kwota za kiełbasę = 18, cukier = 6, wodę = 2, Razem = 26'`, () => {
+      cy.contains('Kiełbasa').click()
+      cy.contains('Cukier').click()
+      cy.contains('Woda').click()
+
+      cy.get('#stockTable > tbody > tr:nth-child(6) > td:nth-child(7)').invoke('text').should('eq', '26')
+      cy.get('#stockTable > tbody > tr:nth-child(6) > td:nth-child(8)').invoke('text').should('eq', '18')
+      cy.get('#stockTable > tbody > tr:nth-child(6) > td:nth-child(9)').invoke('text').should('eq', '6')
+      cy.get('#stockTable > tbody > tr:nth-child(6) > td:nth-child(10)').invoke('text').should('eq', '2')
+    })
 })

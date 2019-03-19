@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "cy": "npx cypress open",
+    "cyrun": "npx cypress run",
     "lint": "vue-cli-service lint > _lint.js",
     "deploy": "npm run build && cd dist && now",
     "devbuild": "npm run build && serve -s dist",
@@ -17,6 +19,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "bootstrap-vue": "2.0.0-rc.11",
+    "cypress": "3.1.5",
     "vue": "2.5.22",
     "vue-router": "3.0.2",
     "vue-template-compiler": "2.5.22",

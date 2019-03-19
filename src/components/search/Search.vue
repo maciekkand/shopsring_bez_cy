@@ -10,18 +10,17 @@ export default {
       streetNumber: '',
       radius: '',
       cities: [
-        { value: null, text: 'Miasto' },
         { text: 'Warszawa', value: 'warszawa' },
         { text: 'Kraków', value: 'krakow' },
         { text: 'Gdańsk', value: 'gdansk' },
       ],
-      showAlert: false
+      showAlert: false,
     }
   },
   computed: {
     loading() {
       return this.$store.getters.getLoading
-    }
+    },
   },
   created() {
     if (sessionStorage.getItem('homeData')) {
