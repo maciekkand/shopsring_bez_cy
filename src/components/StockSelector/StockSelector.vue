@@ -8,11 +8,17 @@ export default {
     return {
       selected: [],
       options: stocksToBuy,
-      show: true
+    }
+  },
+  computed: {
+    showSelector() {
+      return this.$store.getters.getShowTable
     }
   },
   methods: {
     resetStock() {
+      console.log('resetStock')
+
       this.selected = []
       this.$store.dispatch('getStock', [])
     },
